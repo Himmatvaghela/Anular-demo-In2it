@@ -1,0 +1,28 @@
+
+
+<div class="product-container">
+    <div class="producta-table-row">
+        <div class="tablebox">
+            <div class="heading-search-box">
+              <h1>Product Table List</h1>
+              <div class="search-icon-box">
+                <input type="text" placeholder="search" />
+                <i-feather name="settings" (click)="togglePanelFunc()"></i-feather >
+              </div>
+            </div>
+            <div class="list_container">
+        
+              <div class="list_box">
+                <app-ag-grid-table [showHidePanel]="showHidePanel" [gridOptions]="gridOptions"  [rowData]="StandardTableList" [colDefs]="colDefs" (buttonClicked)="handleCheckBox($event)"></app-ag-grid-table>
+              </div>
+        
+            </div>
+          </div>
+    </div>
+    <div class="btn-row">
+        <button class="cancel">Cancel</button>
+        <button class="addToList" routerLink="/tables/products/local-list"  (click)="addDataToList()" [ngClass]="{'disable': btnDisable}" [disabled]="btnDisable">Add To List >></button>
+    </div>
+</div>
+
+

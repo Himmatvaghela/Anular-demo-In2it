@@ -1,0 +1,54 @@
+<div class="form_list_container">
+  <div class="list_container">
+    
+    <div class="list_box">
+      <!-- <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Role</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of dataToShow.contacts">
+            <td class="text-blue" (click)="openProfile(data)">
+              <a></a>{{ data.name }}
+            </td>
+            <td >{{ data.role }}</td>
+            <td>{{ data.email }}</td>
+            <td>{{ data.phone }}</td>
+          </tr>
+        </tbody>
+      </table> -->
+      <app-ag-grid-table [gridOptions]="gridOptions" [rowData]="dataToShow.contacts" [colDefs]="colDefs"></app-ag-grid-table>
+    </div>
+    
+  </div>
+
+  <div class="profile-box" [ngStyle]="{ width: form_width + '%' }">
+  
+    <div class="form_" >
+      <div class="profile_row">
+          <div class="icon-text-box">
+              <i-feather name="user" class="icon"></i-feather>
+              <div class="text">
+                  <h2>{{contactData.name}}</h2>
+                  <span>Organization : {{dataToShow.organization}}</span>
+              </div>
+          </div>
+      </div>
+      <div class="eml_ph_row">
+          <span>email  : {{contactData.email}}</span>
+          <span>phone  : {{contactData.phone}}</span>
+      </div>
+      <div class="role_row">
+          <span>role  : {{contactData.role}}</span>
+          <span>additional  : {{contactData.additionalRole}}</span>
+      </div>
+
+      <button class="close-button" (click)="closeProfile()">Close</button>
+    </div>
+  </div>  
+</div>

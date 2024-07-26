@@ -1,0 +1,471 @@
+
+.new-bar{
+    width: 100%;
+    height: 5%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    grid-gap: 2rem;
+    padding-left: 4rem;
+    border-bottom: 1px solid rgb(194, 192, 192);
+}
+
+.new-bar .btn-box{
+    border: none;
+    background-color: white;
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    grid-gap: 0.2rem;
+}
+
+.organization-container{
+    width: 100%;
+    height: 89%;
+    display: flex;
+}
+
+.organization-container .sidebox{
+    width: 20%;
+    height: 100%;
+    background-color: rgb(183, 132, 232);
+    display: flex;
+    flex-direction: column;
+    grid-gap: 1rem;
+}
+
+.organization-container .sidebox .box{
+    width: 100%;
+    padding: 0.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.organization-container .sidebox .active{
+    background-color: white;
+}
+
+.organization-container .sidebox .box input{
+    width: 100%;
+    padding: 0.2rem 0.3rem;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+ h1{
+    font-size: 18px;
+}
+
+.organization-container .sidebox .box h3{
+    font-size: 16px;
+}
+
+.organization-container .sidebox .box span{
+    font-size: 12px;
+}
+
+.organization-container .tablebox{
+    width: 80%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+}
+
+.tablebox .heading-search-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem;
+}
+
+.tablebox .heading-search-box .search-icon-box{
+    display: flex;
+    align-items: center;
+    grid-gap: 1rem;
+}
+
+.tablebox .heading-search-box .search-icon-box input{
+    width: 100%;
+    padding: 0.2rem 0.3rem;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+
+.list_container{
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+
+.list_container .list_box{
+    height: 90%;
+    /* overflow: scroll; */
+    margin: 1rem 0rem;
+}
+
+table{
+    width: 100%;
+}
+
+th,td{
+    padding: 0.5rem;
+    text-align: start;
+}
+td{
+    font-size: 12px;
+}
+th{
+    font-size: 14px;
+}
+
+.text-blue{
+    color: blue;
+    cursor: pointer;
+}
+
+
+.delete{
+    color: red;
+    margin-right: 1rem;
+}
+.edit{
+    color: green;
+}
+
+
+/* openform*/
+
+
+
+.profile-box{
+    overflow-y: scroll;
+    transition: width 0.4s ease-in-out;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 1rem;
+    align-items: start;
+    box-shadow: -1px -1px 10px -1.5px grey;
+}
+
+
+/*for profile*/
+
+
+.form_ .profile_row{
+    padding: 0.5rem 1rem;
+}
+
+.form_ .profile_row button{
+    border: none;
+    background-color: white;
+}
+
+.form_ .profile_row .icon-text-box{
+    display: flex;
+    grid-gap: 1rem;
+    align-items: center;
+}
+.form_ .profile_row .icon-text-box .icon{
+    width: 55px;
+    height: 55px;
+    color: blue;
+}
+
+.form_ .eml_ph_row{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    grid-gap: 0.5rem;
+}
+
+.form_ .role_row{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    grid-gap: 0.5rem;
+
+}
+ h2{
+    font-size: 16px;
+}
+ span{
+    font-size: 14px;
+}
+
+.close-button{
+    padding: 0.5rem 1rem;
+    background-color: blue;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+}
+
+
+/*for form*/
+
+
+.form_{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 1rem;
+    align-items: start;
+    width: 100%;
+    padding: 1rem 1rem;
+}
+
+.form_ form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 2rem;
+    align-items: start;
+    width: 100%;
+}
+
+.form_ .title-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.form_ .profile_row{
+    display: flex;
+    align-items: center;
+    grid-gap: 1rem;
+}
+
+.form_ .profile_row .img-btn-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-gap: 0.5rem;
+    /* width: 30; */
+}
+.form_ .profile_row .img-btn-box .icon{
+    width: 55px;
+    height: 55px;
+    color: blue;
+}
+
+.form_ .profile_row .img-btn-box .add-btn{
+    color: blue;
+    font-size: 12px;
+    border: none;
+    background-color: white;
+    text-wrap: nowrap;
+}
+
+.name-org-box{
+    display: flex;
+    flex-direction: column;
+    grid-gap: 0.2rem;
+    flex-grow: 1;
+}
+
+.name-org-box .input-lable{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+.name-org-box .input-lable label{
+    font-size: 14px;
+    text-wrap: nowrap;
+}
+
+.name-org-box .input-lable .input-box{
+    display: flex;
+    align-items: start;
+    grid-gap: 0.2rem;
+    width: 60%;
+}
+
+.name-org-box .input-lable .input-box input,select{
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    font-size: 14px;
+    color: black;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid black;
+}
+
+
+
+.role-row{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 0.5rem;
+}
+
+ .role-row .input-lable{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    grid-gap: 1rem;
+}
+ .role-row .input-lable label{
+    font-size: 14px;
+    text-wrap: nowrap;
+}
+ .role-row .input-lable .input-box{
+    display: flex;
+    align-items: start;
+    grid-gap: 0.2rem;
+    width: 100%;
+}
+
+ .role-row .input-lable .input-box input,select{
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    font-size: 14px;
+    color: black;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid black;
+}
+
+
+
+.remark{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    grid-gap: 0.5rem;
+    width: 100%;
+}
+
+.remark textarea{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.contact-info-row{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: start; */
+    grid-gap: 0.5rem;
+}
+
+ .contact-info-row .input-lable{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    grid-gap: 1rem;
+}
+ .contact-info-row .input-lable label{
+    font-size: 14px;
+    text-wrap: nowrap;
+}
+ .contact-info-row .input-lable .input-box{
+    display: flex;
+    align-items: start;
+    grid-gap: 0.2rem;
+    width: 100%;
+}
+
+ .contact-info-row .input-lable .input-box input,select{
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    font-size: 14px;
+    color: black;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid black;
+}
+
+/* .contact-info-row .input-lable .input-box .select1{
+    width: 25%;
+} */
+
+.contact-info-row .add-field{
+    font-size: 12px;
+    color: blue;
+    border: none;
+    background-color: white;
+    width: 40%;
+}
+
+.fArr_inp_box{
+    display: flex;
+    flex-direction: column;
+    grid-gap: 0.5rem;
+    width: 100%;
+}
+
+.fArr_inp_box button{
+    border: none;
+    background-color: white;
+
+}
+
+.fArr_inp_box button .icon{
+    color: red;
+
+}
+
+.btn-row{
+    display: flex;
+    align-items: center;
+    grid-gap: 2rem;
+}
+
+.btn-row .close-button,.clear,.save{
+    padding: 0.5rem 1rem;
+    background-color: blue;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+}
+
+.error-show-box {
+    width: 100%;
+}
+.select1{
+    width: 72px;
+}
+
+form .ng-touched.ng-invalid{
+    border: 1px solid red !important;
+}
+ .error-box{
+
+    span{
+        color: red;
+        font-size: 14px;
+    }
+}
+
+.disable{
+    color: rgb(215, 215, 215) !important;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+  .dropdown-toggle::after{
+    display: none !important;
+}

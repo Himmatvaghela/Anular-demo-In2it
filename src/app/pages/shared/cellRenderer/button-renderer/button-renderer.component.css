@@ -1,0 +1,15 @@
+
+
+.delete{
+    color: red;
+    }
+.edit{
+    margin-right: 0.5rem;
+    color: green;
+}
+
+.blackbtn{
+    color:black;
+    width: 18px;
+    margin-right: 0.5rem;
+}

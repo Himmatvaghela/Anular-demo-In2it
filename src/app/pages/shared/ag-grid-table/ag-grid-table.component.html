@@ -1,0 +1,48 @@
+<div class="ag-table-container">
+
+    <!-- <div class="heading-search-box">
+        <h1>{{heading || ''}}</h1>
+        <div class="search-icon-box">
+          <input type="text" placeholder="search" />
+          <i-feather name="settings" class="icon"></i-feather >
+          <i-feather  name="plus-circle" class="add icon" (click)="addNewRow()"></i-feather>
+        </div>
+    </div> -->
+    
+    <div class="panel-container">
+        <div class="panel" *ngIf="showHidePanel">
+            <div class="icon-text" *ngFor="let col of colDefList" (click)="hideShowCol(col)" >
+                <i-feather class="icon" *ngIf="col.headerName" [name]="!col.hide?'eye':'eye-off'"></i-feather>     
+                <span >
+                    {{col.headerName}}
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <ag-grid-angular
+    [rowData]="rowData"
+    [columnDefs]="colDefs"
+    class="ag-theme-alpine"
+    style="height: 100%;width: 100%;"
+    [defaultColDef]="defaultColDef"
+    (selectionChanged)="onSelectionChanged()"
+    (gridReady)="onGridReady($event)"
+    [rowSelection]="rowSelection"
+    [suppressRowClickSelection]="true"
+    [pagination]="true"
+    [paginationPageSize]="paginationPageSize"
+    [suppressMovableColumns]="true"
+    [gridOptions]="gridOptions"
+    [isRowSelectable]="isRowSelectable"
+    [getRowStyle]="getRowStyle"
+    [suppressCellFocus]="ParentCompName"
+    [suppressClickEdit]="true"
+    >
+    </ag-grid-angular>
+
+</div>
+<!-- [gridOptions]="gridOptions" -->
+<!-- do not move out of the table -->
+<!-- [suppressDragLeaveHidesColumns]="true" -->
+

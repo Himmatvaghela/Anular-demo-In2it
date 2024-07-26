@@ -1,0 +1,19 @@
+<div class="mytask_head">
+    <div class="heading_box" (click)="activeTab('0')" [ngClass]="{'active': active=='0'}" >
+      <h1 >{{header.links}}</h1>
+    </div>
+    
+    <ul *ngIf="header.links=='organization'" ngbNav #nav="ngbNav" class="nav-tabs">
+        
+            <li *ngFor="let tabData of navs" [ngbNavItem]="tabData.id" [ngClass]="{'active': active==tabData.id}">
+                <button class="active-btn" ngbNavLink (click)="activeTab(tabData.id)">
+                    {{ tabData.organization }}
+                </button>
+                <i-feather name="x" (click)="close( tabData.id)"></i-feather>
+                <!-- <span class="btn-close ms-3 fw-light" (click)="close($event, id)"></span> -->
+            </li>
+
+    </ul>
+    
+    <!-- <div [ngbNavOutlet]="nav" class="mt-2"></div> -->
+  </div>

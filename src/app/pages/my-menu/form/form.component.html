@@ -1,0 +1,82 @@
+
+
+<div class="form_container">
+    <form class="container" [formGroup]="tableForm" (submit)="tableFormSubmit()">
+        <div class="input_lable">
+            <label for="exampleInputEmail1" class="form-label">Solution Area</label>
+            <input type="text" formControlName="solutionArea" >
+
+            <div class="error-box" *ngIf="tableForm.get('solutionArea')?. invalid && tableForm.get('solutionArea')?.touched">
+              <span *ngIf="tableForm.get('solutionArea')?.errors?.['required']">This Field is Required</span>
+              <!-- <span *ngIf="tableForm.get('solutionArea')?.errors?.['minlength']">solutionArea is re</span> -->
+          </div>
+        </div>
+        <div class="input_lable">
+            <label for="exampleInputEmail1" class="form-label">Workflow</label>
+            <input type="text" formControlName="workflow">
+
+            <div class="error-box" *ngIf="tableForm.get('workflow')?. invalid && tableForm.get('workflow')?.touched">
+              <span *ngIf="tableForm.get('workflow')?.errors?.['required']">This Field is Required</span>
+          </div>
+        </div>
+        <div class="input_lable">
+            <label for="exampleInputEmail1" class="form-label">Task Id</label>
+            <input type="text" formControlName="taskId">
+
+            <div class="error-box" *ngIf="tableForm.get('taskId')?. invalid && tableForm.get('taskId')?.touched">
+              <span *ngIf="tableForm.get('taskId')?.errors?.['required']">This Field is Required</span>
+          </div>
+          </div>
+        <div class="input_lable">
+            <label for="exampleInputEmail1" class="form-label">Task</label>
+            <input type="text" formControlName="task">
+
+            <div class="error-box" *ngIf="tableForm.get('task')?. invalid && tableForm.get('task')?.touched">
+              <span *ngIf="tableForm.get('task')?.errors?.['required']">This Field is Required</span>
+          </div>
+          </div>
+          <div class="input_lable">
+            <label for="exampleInputEmail1" class="form-label">Status</label>
+            <select formControlName="status">
+                <option value="">--select--</option>
+                <option value="Sheduled">Sheduled</option>
+                <option value="Unsheduled">Unsheduled</option>
+            </select>
+
+            <div class="error-box" *ngIf="tableForm.get('status')?. invalid && tableForm.get('status')?.touched">
+              <span *ngIf="tableForm.get('status')?.errors?.['required']">This Field is Required</span>
+          </div>
+          </div>
+          <div class="input_lable">
+            <label for="exampleInputEmail1" class="form-label">Start Date</label>
+            <input type="date" formControlName="startDate">
+
+            <div class="error-box" *ngIf="tableForm.get('startDate')?. invalid && tableForm.get('startDate')?.touched">
+              <span *ngIf="tableForm.get('startDate')?.errors?.['required']">This Field is Required</span>
+          </div>
+          </div>
+          <div class="input_lable">
+            <label for="exampleInputEmail1" class="form-label">Due Data</label>
+            <input [min]="MinDate" type="date" formControlName="dueDate">
+
+            <div class="error-box" *ngIf="tableForm.get('dueDate')?. invalid && tableForm.get('dueDate')?.touched">
+              <span *ngIf="tableForm.get('dueDate')?.errors?.['required']">This Field is Required</span>
+          </div>
+          </div>
+          <div class="input_lable">
+            <label for="exampleInputEmail1" class="form-label">Priority</label>
+            <select formControlName="priority">
+                <option value="">--select--</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+
+            <div class="error-box" *ngIf="tableForm.get('priority')?. invalid && tableForm.get('priority')?.touched">
+              <span *ngIf="tableForm.get('priority')?.errors?.['required']">This Field is Required</span>
+          </div>
+          </div>
+           
+        <button type="submit" class="submit_btn" [ngClass]="{'update-btn': UpdataData}">{{UpdataData==true?'Update':'Submit'}}</button>
+      </form>
+</div>

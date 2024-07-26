@@ -1,0 +1,27 @@
+
+
+<div class="localList-container">
+    <div class="localList-table-row">
+        <div class="tablebox">
+            <div class="heading-search-box">
+              <h1>Product Table List</h1>
+              <div class="search-icon-box">
+                <input type="text" placeholder="search" (keyup)="searchFunc($event)" />
+                <i-feather name="settings" class="icon" (click)="togglePanelFunc()"></i-feather >
+                <i-feather name="plus-circle" class="add icon" (click)="addNewRow()"></i-feather>
+              </div>
+            </div>
+            <div class="list_container">
+        
+              <div class="list_box">
+                <app-ag-grid-table [searchVal]="searchVal" [showHidePanel]="showHidePanel" [gridOptions]="gridOptions"  [rowData]="localTableList" [colDefs]="colDefs"></app-ag-grid-table>
+              </div>
+              
+            </div>
+          </div>
+    </div>
+    <div class="btn-row">
+        <button class="cancel" routerLink="/tables/products">Back</button>
+        <button class="addToList">Set Data Model >></button>
+    </div>
+</div>

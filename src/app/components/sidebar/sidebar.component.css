@@ -1,0 +1,65 @@
+.sidebar_container{
+    width: 20vw;
+    height: 100%;
+    background-color: rgb(195, 195, 242);
+    overflow-y: hidden;
+    padding-top: 4rem;
+    transition: width 0.3s ease-in-out;
+    
+}
+
+.sidebar_container .toggle_btn{
+    padding: 0.5rem 0.5rem;
+    border-radius: 5px;
+    background-color: rgb(195, 195, 242);
+    border: none;
+    position: absolute;
+    left: 0.5rem;
+    top: 4.2rem;
+    z-index: 10;
+}
+
+.my-menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left:2rem ;
+    margin-bottom: 0.6rem;
+}
+
+.my-menu .btns{
+    display: flex;
+    flex-direction: column;
+    grid-gap: 0.5rem;
+    margin-left: 1rem;
+    /* margin-top: 0.5rem; */
+    margin-bottom: 0rem !important;
+    list-style: none;
+    padding: 0rem !important;
+}
+
+
+.my-menu .btns a{
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    margin: 0.5rem 0rem 0rem 0rem;
+    display: flex;
+    /* align-items: center; */
+    grid-gap: 0.4rem;
+}
+
+.my-menu .btns a .icons{
+    width: 16px;
+    height: 16px;
+}
+
+.active{
+    color: blueviolet!important;
+}
+
+h3{
+    font-size: 1.5rem;
+    margin-bottom: 0 !important;
+}
+

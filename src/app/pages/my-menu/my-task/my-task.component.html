@@ -1,0 +1,88 @@
+<div class="myTask_container">
+  <!-- <div class="mytask_head">
+    <div class="heading_box">
+      <h1>my task</h1>
+    </div>
+  </div> -->
+
+  <div class="card_parent">
+    <app-card
+      [carddata]="item"
+      *ngFor="let item of arr"
+      (click)="focusCard(item.name)"
+      [ngClass]="{ active: item.name == itemName }"
+    ></app-card>
+  </div>
+
+  <div class="filter_row">
+    <h1>Task List Data</h1>
+    <div class="icon">
+      <i-feather name="filter"></i-feather>
+      <i-feather
+        [name]="form_width == 35 ? 'x-square' : 'plus-circle'"
+        class="plus"
+        [ngClass]="{ cancel: form_width == 35 }"
+        (click)="toggleForm()"
+      ></i-feather>
+    </div>
+  </div>
+
+  <div class="form_list_container">
+    <div class="list_container">
+      
+      <div class="list_box">
+        <!-- <table>
+          <tr>
+            <th>Id</th>
+            <th>Solution Area</th>
+            <th>Workflow</th>
+            <th>Task Id</th>
+            <th>Task</th>
+            <th>Status</th>
+            <th>Start Date</th>
+            <th>Due Data</th>
+            <th>Priority</th>
+            <th>Action</th>
+          </tr>
+          <tr *ngFor="let data of dataToShow">
+            <td>{{ data.id }}</td>
+            <td>{{ data.solutionArea }}</td>
+            <td>{{ data.workflow }}</td>
+            <td>{{ data.taskId }}</td>
+            <td>{{ data.task }}</td>
+            <td>{{ data.status }}</td>
+            <td>{{ data.startDate }}</td>
+            <td>{{ data.dueDate }}</td>
+            <td>{{ data.priority }}</td>
+            <td>
+              <i-feather
+                name="trash-2"
+                class="delete"
+                (click)="deleteData(data.id)"
+              ></i-feather>
+              <i-feather
+                name="edit"
+                class="edit"
+                (click)="editData(data)"
+              ></i-feather>
+            </td>
+          </tr>
+        </table> -->
+
+        <app-ag-grid-table [gridOptions]="gridOptions" [rowData]="dataToShow" [colDefs]="colDefs"></app-ag-grid-table>
+      </div>
+      
+    </div>
+
+    <app-form
+      class="form_"
+      [ngStyle]="{ width: form_width + '%' }"
+      (messageEvent)="receiveMessage($event)"
+      (updataDataEvent)="updateData($event)"
+      [formPatchVal]="form_val_patch"
+      [update_data_toggle]="updata_data_toggle"
+    ></app-form>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="overlayService.overlay | async" (click)="toggleOverlay()"></div>

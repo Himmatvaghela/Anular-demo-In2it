@@ -1,0 +1,74 @@
+
+<div class="new-bar">new | just</div>
+
+<app-tab-bar></app-tab-bar>
+<div class="organization-container">
+  <div class="sidebox">
+    <div class="box">
+      <h3>List</h3>
+    </div>
+    <div class="all_orgnization_box box" (click)="filterOrganization('')" [ngClass]="{'active': activeTab==''}">
+      <h1>All Organization</h1>
+      <span>{{data.length}} organization</span>
+    </div>
+
+    <div class="search-box box">
+      <input type="search" placeholder="search"/>
+    </div>
+
+    <div class="all_orgnization_box box" (click)="filterOrganization('customer')" [ngClass]="{'active': activeTab=='customer'}">
+      <h3>customer</h3>
+      <span>{{customer.length}} organization</span>
+    </div>
+
+    <div class="all_orgnization_box box" (click)="filterOrganization('Non customer')" [ngClass]="{'active': activeTab=='Non customer'}">
+        <h3>Non customer</h3>
+        <span>{{non_customer.length}} organization</span>
+      </div>
+  </div>
+
+  <div class="tablebox">
+    <div class="heading-search-box">
+      <h1>All Organizations List</h1>
+      <div class="search-icon-box">
+        <input type="text" placeholder="search"  (keyup)="onSearchValue($event)"/>
+        <i-feather name="settings"></i-feather >
+      </div>
+    </div>
+    <div class="list_container">
+
+      <div class="list_box">
+        <!-- <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Organization</th>
+              <th scope="col">Type</th>
+              <th scope="col">Industry</th>
+              <th scope="col">Onboarding</th>
+              <th scope="col">Related Orgs</th>
+              <th scope="col">Products</th>
+              <th scope="col">Org SPOC</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of dataToShow">
+              <td class="text-blue" (click)="setTab(data)" >{{ data.organization }}</td>
+              <td>{{ data.type }}</td>
+              <td>{{ data.industry }}</td>
+              <td>{{ data.onboarding }}</td>
+              <td>{{ data.related_orgs.length }}</td>
+              <td>{{ data.products.length }}</td>
+              <td>{{ data.org_SPOC }}</td>
+              <td>{{ data.contacts.length>0? data.contacts[0].email:''}}</td>
+              <td>{{ data.contacts.length>0? data.contacts[0].phone:'' }}</td>
+            </tr>
+          </tbody>
+        </table> -->
+        <app-ag-grid-table [gridOptions]="gridOptions" [rowData]="dataToShow" [colDefs]="colDefs" ></app-ag-grid-table>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<div class="sidebar_container" [ngStyle]="{ width: width_ + 'vw' }">
+  <button class="toggle_btn" (click)="toggleSidebar()">
+    <i-feather name="align-justify"></i-feather>
+  </button>
+
+  <div class="my-menu">
+    <h3>My Menu</h3>
+    <ul class="btns" *ngFor="let myMenu of routing_Links.mymenu">
+      <li>
+        <a
+          [routerLink]="'my-menu/' + myMenu.name.replace(' ', '-').toLowerCase()"
+          routerLinkActive="active"
+          (click)="routeShowHeader(myMenu.name,'My Menu')"
+        >
+          <i-feather [name]="myMenu.icon" class="icons"></i-feather>
+          <span>{{ myMenu.name }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="my-menu">
+    <h3>My Organization</h3>
+    <ul
+      class="btns"
+      *ngFor="let myOrganization of routing_Links.myorganization"
+    >
+      <li>
+        <a
+          [routerLink]="'my-organization/' +myOrganization.name.replace(' ', '-').toLowerCase()"
+          routerLinkActive="active"
+          (click)="routeShowHeader(myOrganization.name,'My Organization')"
+        >
+          <i-feather [name]="myOrganization.icon" class="icons"></i-feather>
+          <span>{{ myOrganization.name }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="my-menu">
+    <h3>Tables</h3>
+    <ul class="btns" *ngFor="let tbls of routing_Links.tables">
+      <li>
+        <a
+          [routerLink]="'tables/' + tbls.name.replace(' ', '-').toLowerCase()"
+          routerLinkActive="active"
+          (click)="routeShowHeader(tbls.name,'Tables')"
+        >
+          <i-feather [name]="tbls.icon" class="icons"></i-feather>
+          <span>{{ tbls.name }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="my-menu">
+    <h3>Designer</h3>
+    <ul class="btns" *ngFor="let desgn of routing_Links.designer">
+      <li>
+        <a
+          [routerLink]="'designer/' + desgn.name.replace(' ', '-').toLowerCase()"
+          routerLinkActive="active"
+          (click)="routeShowHeader(desgn.name,'Designer')"
+        >
+          <i-feather [name]="desgn.icon" class="icons"></i-feather>
+          <span>{{ desgn.name }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="my-menu">
+    <h3>Settings</h3>
+    <ul class="btns" *ngFor="let stng of routing_Links.settings">
+      <li>
+        <a
+          [routerLink]="'settings/' + stng.name.replace(' ', '-').toLowerCase()"
+          routerLinkActive="active"
+          (click)="routeShowHeader(stng.name,'Settings')"
+        >
+          <i-feather [name]="stng.icon" class="icons"></i-feather>
+          <span>{{ stng.name }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

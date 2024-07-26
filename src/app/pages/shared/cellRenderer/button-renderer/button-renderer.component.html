@@ -1,0 +1,11 @@
+
+
+<!-- delete and edit button -->
+<i-feather *ngIf="!params.data.is_editMode && !params.data.addMode" name="edit" class="edit" [ngClass]="{'blackbtn': blackButtons}" (click)='editData()'></i-feather>
+<i-feather *ngIf="!params.data.is_editMode && !params.data.addMode" name="trash-2" class="delete" [ngClass]="{'blackbtn': blackButtons}" (click)="deleteData()"></i-feather>
+
+<!-- check and cancel button -->
+<i-feather *ngIf="params.data.is_editMode || params.data.addMode" name="check-circle" class="edit" (click)="updateRow()"></i-feather>
+<i-feather *ngIf="params.data.is_editMode || params.data.addMode" name="x-circle" class="delete" (click)="cancel()"></i-feather>
+
+

@@ -1,0 +1,288 @@
+
+<div class="new-bar">
+
+		<div ngbDropdown class="d-inline-block">
+			<button type="button" class="btn-box" id="dropdownBasic1" ngbDropdownToggle>
+				<i-feather name="plus-circle"></i-feather>
+                <span>new</span>
+			</button>
+			<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+				<button ngbDropdownItem (click)="openForm()">Single Contact</button>
+				<button ngbDropdownItem>Bulk Upload</button>
+			</div>
+		</div>
+
+    <button class="btn-box" 
+        [ngClass]="{'disable': checkBoxSelectedData.length<1 || checkBoxSelectedData.length > 1}"
+        [disabled]="checkBoxSelectedData.length<1 || checkBoxSelectedData.length > 1"
+        (click)="editOnTopButton()"
+        >
+        <i-feather name="edit"></i-feather>
+        <span>Edit</span>
+    </button>
+    <button class="btn-box" 
+        [ngClass]="{'disable': checkBoxSelectedData.length<1}"
+        [disabled]="checkBoxSelectedData.length<1"
+        (click)="deleteContacts()"
+    >
+        <i-feather name="trash-2"></i-feather>
+        <span>Delete</span>
+    </button>
+    <button class="btn-box">
+        <i-feather name="share-2"></i-feather>
+        <span>share</span>
+    </button>
+</div>
+
+<app-tab-bar></app-tab-bar>
+<div class="organization-container">
+  <div class="sidebox">
+    <div class="box">
+      <h3>List</h3>
+    </div>
+    <div class="all_orgnization_box box" (click)="filterOrganization('')" [ngClass]="{'active': activeTabContact==''}">
+      <h1>All Contacts</h1>
+      <span>{{allContactLength}} Contacts</span>
+    </div>
+
+    <div class="search-box box">
+    <input type="text" placeholder="search" (keyup)="searchValue1($event)"/>
+    </div>
+
+    <div class="all_orgnization_box box" *ngFor="let org of orgWiseContact" (click)="filterOrganization(org.organization)" [ngClass]="{'active': activeTabContact==org.organization}">
+      <h3>{{org.organization}}</h3>
+      <span>{{org.contacts.length}} contacts</span>
+    </div>
+
+  </div>
+
+  <div class="tablebox">
+    <div class="heading-search-box">
+      <h1>All Contacts List</h1>
+      <div class="search-icon-box">
+        <input type="text" placeholder="search" (keyup)="searchValue2($event)"/>
+        <i-feather name="settings"></i-feather >
+      </div>
+    </div>
+    <div class="list_container">
+      
+      <div class="list_box">
+        <!-- <table class="table">
+          <thead class="thead-dark">
+            <tr>
+                <th scope="col" width="5%"><input class="form-check-input" type="checkbox" [checked]="isAllCheckSelected" (change)="selectAllCheck($event)"></th>
+                <th scope="col">Organization</th>
+                <th scope="col">Name</th>
+                <th scope="col">Role</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let org of orgData;  trackBy: trackByOrganization" >
+            <tr *ngFor="let contc of org.contacts;let i=index;  trackBy: trackByContact">
+                <th scope="row"><input class="form-check-input" type="checkbox" [checked]="isChecked(org, contc)" (change)="checkBoxSelected(org,contc)"></th>
+                <td class="text-blue" (click)="setTab(org.id)" >{{ org.organization }}</td>
+                <td class="text-blue" (click)="profileOpen(org,contc)">{{ contc.name }}</td>
+                <td>{{ contc.role }}</td>
+                <td>{{ contc.email}}</td>
+                <td>{{ contc.phone }}</td>
+            </tr>
+          </tbody>
+        </table> -->
+
+        <app-ag-grid-table [gridOptions]="gridOptions" [rowData]="allContacts" [colDefs]="colDefs" (buttonClicked)="handleCheckBox($event)"></app-ag-grid-table>
+      </div>
+      
+    </div>
+</div>
+    <div class="profile-box" [ngStyle]="{ width: form_width + '%' }">
+
+  
+            <div class="form_" *ngIf="profileShow">
+              <div class="profile_row">
+                  <div class="icon-text-box">
+                      <i-feather name="user" class="icon"></i-feather>
+                      <div class="text">
+                          <h2>{{dataToShowProfile.name}}</h2>
+                          <span>Organization : {{dataToShowProfile.organization}}</span>
+                      </div>
+                  </div>
+                  <button class="edit" (click)="editContact(dataToShowProfile)">
+                    <i-feather name="edit" class="icon"></i-feather>
+                </button>
+              </div>
+              <div class="eml_ph_row">
+                  <span>email  : {{dataToShowProfile.email}}</span>
+                  <span>phone  : {{dataToShowProfile.phone}}</span>
+              </div>
+              <div class="role_row">
+                  <span>role  : {{dataToShowProfile.role}}</span>
+                  <span>additional  : {{dataToShowProfile.additionalRole}}</span>
+              </div>
+        
+              <button class="close-button" (click)="closeForm()">Close</button>
+            </div>
+
+
+        <div class="form_" *ngIf="!profileShow">
+            <div class="title-row">
+                <h1>{{editMode?'Edit Contact':'Add New Contact'}}</h1>
+                <span>Bulk Upload</span>
+            </div>
+
+            <form [formGroup]="ContactInfo" (submit)="contactInfoSubmit()">
+                <div class="profile_row">
+                    <div class="img-btn-box">
+                        <i-feather name="user" class="icon"></i-feather>
+                        <button class="add-btn">add photo</button>
+                    </div>
+                    <div class="name-org-box">
+                        <div class="input-lable">
+                            <label>Name* :</label>
+                            <div class="input-box">
+                                <div class="error-show-box">
+                                    <input type="text" placeholder="firstname" formControlName="firstName">
+    
+                                    <div class="error-box" *ngIf="ContactInfo.get('firstName')?. invalid && ContactInfo.get('firstName')?.touched">
+                                        <span *ngIf="ContactInfo.get('firstName')?.errors?.['required']">Required</span>
+                                    </div>
+                                </div>
+                                <input type="text" placeholder="lastname" formControlName="lastName">
+                            </div>
+                        </div>
+                        <div class="input-lable">
+                            <label>Organization* :</label>
+                            <div class="input-box">
+                                <div class="error-show-box">
+                                    <select formControlName="organization" (change)="orgSelect()">
+                                        <option value="" disabled="true">--select--</option>
+                                        <option   [value]="org.organization" *ngFor="let org of orgWiseContact">{{org.organization}}</option>
+                                    </select>
+                                    <div class="error-box" *ngIf="ContactInfo.get('organization')?. invalid && ContactInfo.get('organization')?.touched">
+                                        <span *ngIf="ContactInfo.get('organization')?.errors?.['required']">Required</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-info-row">
+                    <div class="input-lable">
+                        <label>Email* :</label>
+                        <div class="input-box">
+                            <div class="error-show-box">
+                                <input type="text" placeholder="Email" formControlName="email">
+
+                                <div class="error-box" *ngIf="ContactInfo.get('email')?. invalid && ContactInfo.get('email')?.touched">
+                                    <span *ngIf="ContactInfo.get('email')?.errors?.['required']">Required</span>
+                                    <span *ngIf="ContactInfo.get('email')?.errors?.['email']">Invalid Email</span>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-lable">
+                        <label>Phone* :</label>
+                        <div class="input-box">
+                            <div class="erro-show-box">
+                                <select class="select1" formControlName="phone_code">
+                                    <option value="" disabled="true">code</option>
+                                    <option value="+91">+91</option>
+                                    <option value="+58">+58</option>
+                                </select>
+                                <div class="error-box" *ngIf="ContactInfo.get('phone_code')?. invalid && ContactInfo.get('phone_code')?.touched">
+                                    <span *ngIf="ContactInfo.get('phone_code')?.errors?.['required']">Required</span>
+                                </div>
+
+                            </div>
+                            <div class="error-show-box">
+
+                                <input type="number" placeholder="Enter Number" formControlName="phone" >
+
+                                <div class="error-box" *ngIf="ContactInfo.get('phone')?. invalid && ContactInfo.get('phone')?.touched">
+                                    <span *ngIf="ContactInfo.get('phone')?.errors?.['pattern']">phone length shall 10</span>
+                                    <span *ngIf="ContactInfo.get('phone')?.errors?.['required']">phone Required</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-lable" formArrayName="additionalMedium" >
+                        <div class="fArr_inp_box">
+
+                            <div class="input-box" *ngFor="let field of AdditionalMediumKey?.controls;let i = index" [formGroupName]="i">
+                                <label>Other :</label>
+                                
+                                <select formControlName="medium" class="select1" (change)="otherFieldSelect($event,i)">
+                                    <option value="" disabled="true">select</option>
+                                    <option value="Facebook">Facebook</option>
+                                    <option value="Whatsapp">Whatsapp</option>
+                                    <option value="Twitter">Twitter</option>
+                                    <option value="phone">Phone</option>
+                                </select>
+
+                                <select *ngIf="checkOtherMedium(i) == 'phone'" class="select1" formControlName="phone_code_other">
+                                    <option value="" disabled="true">code</option>
+                                    <option value="+91">+91</option>
+                                    <option value="+58">+58</option>
+                                </select>
+
+                                <input type="text" [placeholder]="checkOtherMedium(i)" formControlName="fieldVal">
+                                <button type="button" (click)="deleteField(i)"><i-feather name="delete" class="icon"></i-feather></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="add-field" (click)="addInputField()">add another Medium</button>
+
+                </div>
+
+                <div class="role-row">
+                    <div class="input-lable">
+                        <label>Roles* :</label>
+                        <div class="input-box">
+                            
+                            <div class="error-show-box">
+                                <select formControlName="role">
+                                    <option value="" disabled="true">--select--</option>
+                                    <option 
+                                    *ngFor="let role of roles" 
+                                    [value]="role" 
+                                        [disabled]="role=='Org SPOC' && disableOrgSpoc " 
+                                        [disabled]="role=='Org SPOC' && disableOrgSpoc && editMode"
+                                    >
+                                        {{role==''?'--select--':role}}
+                                    </option>
+                                </select>
+
+                                <div class="error-box" *ngIf="ContactInfo.get('role')?. invalid && ContactInfo.get('role')?.touched">
+                                    <span *ngIf="ContactInfo.get('role')?.errors?.['required']">Role Required</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-lable">
+                        <label>Additional role :</label>
+                        <div class="input-box">
+                            <input type="text" placeholder="Enter Details" formControlName="additionalRole">
+                        </div>
+                    </div>
+                </div>
+                <div class="remark">
+                    <label>Remark</label>
+                    <textarea placeholder="Enter Details" rows="5" formControlName="remark"></textarea>
+                </div>
+
+                <div class="btn-row">
+                    <button class="close-button" (click)="closeForm()">Close</button>
+                    <button class="clear" (click)="clearValue()">Clear info</button>
+                    <button class="save" type="submit">{{editMode?'Edit':'Add'}}</button>
+                </div>
+            </form>
+        </div>
+    </div>  
+  
+</div>
+

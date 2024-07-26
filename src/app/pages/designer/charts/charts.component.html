@@ -1,0 +1,39 @@
+<div class="chart-container">
+  <div class="chart1-box">
+    <button (click)="updateChart('left')" [disabled]="slideLeft == 0">
+      <i-feather name="arrow-left-circle" class="icon" [ngClass]="{'disabled': slideLeft==0}"></i-feather>
+    </button>
+    <div id="chartdiv" style="width: 100%; height: 100%"></div>
+    <button (click)="updateChart('right')" [disabled]="slideRight == sales_ticket_data_initial.length">
+      <i-feather name="arrow-right-circle" class="icon"[ngClass]="{'disabled': slideRight == sales_ticket_data_initial.length}"></i-feather>
+    </button>
+  </div>
+  <div class="allChart-box">
+    <div class="col1">
+      <div class="box">
+        <app-pie-chart
+          [source_graph]="source_graph"
+          [piechart]="piechart1"
+        ></app-pie-chart>
+      </div>
+      <div class="box">
+        <app-certainty-chart
+          [certainty_data]="certainty_data"
+        ></app-certainty-chart>
+      </div>
+    </div>
+    <div class="col2"></div>
+
+    <div class="col3">
+      <div class="box">
+        <app-funnel-chart [sales_funnel_data]="sales_funnel"></app-funnel-chart>
+      </div>
+      <div class="box">
+        <app-pie-chart
+          [source_graph]="sales_request_data"
+          [piechart]="piechart2"
+        ></app-pie-chart>
+      </div>
+    </div>
+  </div>
+</div>

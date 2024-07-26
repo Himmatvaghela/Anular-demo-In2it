@@ -1,0 +1,38 @@
+.sidebar_layout{
+    display: flex;
+    height: 93vh;
+    width: 100vw;
+}
+
+.app_layout{
+    width: 100%;
+}
+
+.lod_component{
+    /* width: 100vw; */
+    height: 93vh;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+
+
+/* .lod_component .mytask_head{
+    width: 100%;
+    height: 6%;
+    background-color: rgb(212, 209, 209);
+    border-bottom: 1px solid grey;
+}
+
+.lod_component .mytask_head .heading_box{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 100%;
+    border-bottom: 2px solid rgb(71, 12, 232);
+    
+} */
+
+
