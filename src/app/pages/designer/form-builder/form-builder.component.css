@@ -1,0 +1,36 @@
+/* @import "bootstrap/scss/bootstrap-grid"; */
+.bg-custom-color{
+    background-color: rgb(209, 201, 201);
+}
+
+.box{
+    height: 20vh;
+   /* margin: 10px; */
+}
+
+.col-4{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.btn-row{
+    width: 7rem;
+}
+
+
+
+
+form div {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }

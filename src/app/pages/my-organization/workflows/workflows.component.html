@@ -6,17 +6,28 @@
 
 <!-- user-form.component.html -->
 
-<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+<form #userForm="ngForm" (ngSubmit)="onSubmit()" >
   
     <!-- Username Field -->
     <div class="form-group">
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" class="form-control" 
-             ngModel required minlength="3" maxlength="20" #username="ngModel">
+             [(ngModel)]="userFormGroup.username" required minlength="3" maxlength="20" #username="ngModel">
       <div *ngIf="username.invalid && (username.dirty || username.touched)">
         <div *ngIf="username.errors?.['required']">Username is required.</div>
         <div *ngIf="username.errors?.['minlength']">Username must be at least 3 characters long.</div>
         <div *ngIf="username.errors?.['maxlength']">Username cannot be more than 20 characters long.</div>
+      </div>
+    </div>
+
+    <!-- Phone Number Field -->
+    <div class="form-group">
+      <label for="phoneNumber">phone Number:</label>
+      <input appNumericValidator type="text" name="phoneNumber" class="form-control" 
+             [(ngModel)]="userFormGroup.phoneNumber"  required #phoneNumber="ngModel">
+      <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)">
+        <div *ngIf="phoneNumber.errors?.['required']">phone Number is required.</div>
+        <div *ngIf="phoneNumber.errors?.['numeric']">phone Number Must be number.</div>
       </div>
     </div>
     
@@ -24,14 +35,29 @@
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" class="form-control" 
-             ngModel required email #email="ngModel">
+             [(ngModel)]="userFormGroup.email" required email #email="ngModel">
       <div *ngIf="email.invalid && (email.dirty || email.touched)">
         <div *ngIf="email.errors?.['required']">Email is required.</div>
         <div *ngIf="email.errors?.['email']">Please enter a valid email address.</div>
       </div>
     </div>
     
+    <div class="form-group">
+      <label for="email">Address:</label>
+
+      <ng-container *ngFor="let addre of userFormGroup.address; let i=index">
+        <div class="input box" [ngModelGroup]="'address'+i">
+          <input type="text" name="city" placeholder="city" [(ngModel)]="userFormGroup.address[i].city" #city="ngModel">
+          <input type="text" name="country" placeholder="country" [(ngModel)]="userFormGroup.address[i].country" #country="ngModel">
+          <button type="button" (click)="deleteField(i)">delete</button>
+        </div>
+      </ng-container>
+    </div>
+
+    <button type="button" (click)="addField()">add</button>
+    <button type="button" (click)="setDefault()">set Default Value</button>
     <!-- Submit Button -->
     <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit</button>
+    
   </form>
   

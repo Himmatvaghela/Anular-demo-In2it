@@ -1,1 +1,18 @@
 <p>human-tasks works!</p>
+
+
+<div class="container">
+    <div *ngFor="let col of boxes;let i=index" class="box" [ngStyle]="{background: col}" (click)="addIndex(i+1)">{{i+1}}</div>
+</div>
+
+
+<div class="input-box">
+    <label for="position"> Box Number</label>
+    <input type="text" [(ngModel)]="inputVal.position" name="position" placeholder="box Number">
+    <label for="color">Add Color</label>
+    <input type="color" [(ngModel)]="inputVal.color"  name="color" placeholder="add color">
+    
+    <button (click)="submit()">Submit</button>
+    <button (click)="clear()">clear</button>
+</div>
+

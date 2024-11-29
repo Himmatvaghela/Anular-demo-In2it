@@ -10,6 +10,7 @@ import { CertaintyChartComponent } from './certainty-chart/certainty-chart.compo
 import { FunnelChartComponent } from './funnel-chart/funnel-chart.component';
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,12 +20,14 @@ import { allIcons } from 'angular-feather/icons';
     ChartsComponent,
     PieChartComponent,
     CertaintyChartComponent,
-    FunnelChartComponent
+    FunnelChartComponent,
   ],
   imports: [
     CommonModule,
     DesignerRoutingModule,
     FeatherModule.pick(allIcons),
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     FeatherModule

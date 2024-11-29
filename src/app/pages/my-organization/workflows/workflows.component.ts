@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -8,16 +9,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkflowsComponent implements OnInit {
 
+constructor() {}
 
-
-  constructor() { }
-
+  @ViewChild('userForm') form!:NgForm;
 
   ngOnInit(): void {
   }
 
-  onSubmit(userForm: any) {
-    console.log('Form submitted:', userForm.value);
+  userFormGroup={
+    username:'',
+    phoneNumber:null,
+    email:'',
+    address:[
+      {
+        city:'',
+        country:''
+      },
+      {
+        city:'',
+        country:''
+      }
+    ]
   }
 
+  addField() {
+    this.userFormGroup.address.push({city:'',country:''})
+  }
+  deleteField(index:number) {
+    this.userFormGroup.address.splice(index,1)
+  }
+
+
+  //set and patchValue example in temple driven form
+  setDefault(){
+    // this.form.setValue({
+    //   username:'Himmat',
+    //   email:'himmatvaghela@gmail.com'
+    // })
+    console.log(this.form)
+  }
+
+  onSubmit() {
+    console.log('Form submitted:', this.userFormGroup);
+    console.log('form',this.form)
+
+  }
+
+  
 }

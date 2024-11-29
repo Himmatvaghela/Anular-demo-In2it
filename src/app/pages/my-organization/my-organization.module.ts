@@ -19,6 +19,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AllContactsComponent } from './all-contacts/all-contacts.component';
 import {  AgGridModule } from 'ag-grid-angular';
 import { SharedModule } from '../shared/shared.module';
+import { InputErrorDirective } from 'src/app/directive/input-error.directive';
+import { NumericValidatorDirective } from 'src/app/directive/numeric-validator.directive';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 
 @NgModule({
@@ -34,6 +38,8 @@ import { SharedModule } from '../shared/shared.module';
     OrganizationDataComponent,
     TabBarComponent,
     AllContactsComponent,
+    InputErrorDirective,
+    NumericValidatorDirective
   ],
   imports: [
     CommonModule,
@@ -44,7 +50,11 @@ import { SharedModule } from '../shared/shared.module';
     NgbModule,
     NgbNavModule,
     AgGridModule,
-    SharedModule
+    SharedModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   exports:[
     FeatherModule

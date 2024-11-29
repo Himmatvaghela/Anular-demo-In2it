@@ -1,1 +1,72 @@
+
+
+
 <p>solution-areas works!</p>
+
+<div class="solution-container">
+    <div class="form-box">
+        <h1>Sign Up</h1>
+
+        <form [formGroup]="signUpForm" (ngSubmit)="SubmitFunc()">
+            <div class="input-box">
+                <input type="text" placeholder="Name" formControlName="name" appInputError="name">
+                <span >
+                    <!-- Error message handled by the directive -->
+                </span>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Email" formControlName="email" appInputError="email">
+                <span >
+                    <!-- Error message handled by the directive -->
+                </span>
+            </div>
+
+            <div class="address-input-box" formArrayName="address" *ngFor="let addressField of addressControl.controls; let i=index">
+                <ng-container [formGroupName]="i">
+                <div class="input-box">
+                    <input type="text" placeholder="city" formControlName="city" appInputError="city">
+                    <span >
+                        <!-- Error message handled by the directive -->
+                    </span>
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="country" formControlName="country" appInputError="country">
+                    <span >
+                        <!-- Error message handled by the directive -->
+                    </span>
+                </div>
+                <i-feather name="trash-2" class="delete-icon" (click)="removeField(i)"></i-feather>
+            </ng-container>
+        </div>
+
+        <button class="add-button" (click)="addField()">
+            <i-feather name="plus-square" class="plus-icon" ></i-feather >
+                add more
+        </button>
+
+
+        <fieldset (change)="radioButtonChanged()">
+            <legend>Do You Like Fruit</legend>
+            <label>
+              <input type="radio" formControlName="fruit" value="Yes" formControlName="likeFruit">
+              YES
+            </label><br>
+        
+            <label>
+              <input type="radio" formControlName="fruit" value="No" formControlName="likeFruit">
+              NO
+            </label><br>
+        </fieldset>
+        <div class="input-box">
+            <input type="text" placeholder="why do you like fruit" formControlName="reason" appInputError="reason">
+            <span>
+
+            </span>
+        </div>
+            <button type="submit" class="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+  

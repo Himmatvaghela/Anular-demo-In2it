@@ -3,6 +3,7 @@
 
 @import 'ag-grid-community/styles/ag-grid.css';
 @import 'ag-grid-community/styles/ag-theme-alpine.css';
+@import '~angular-calendar/css/angular-calendar.css';
 
 *{
     margin: 0;

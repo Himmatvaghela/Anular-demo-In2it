@@ -127,6 +127,7 @@ export class AllContactsComponent implements OnInit {
 		this.orgService.setActiveTabId('0')
     
     this.route.url.subscribe((val) => {
+      console.log(val)
       this.serverService.setHeader({
         links: val[0].path,
         module: 'my-organization',

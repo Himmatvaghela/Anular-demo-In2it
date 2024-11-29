@@ -1,0 +1,93 @@
+
+
+.solution-container{
+    width: 100vw;
+    min-height: 100vh;
+    background-color: rgb(216, 215, 215);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.solution-container .form-box{
+    width: 30%;
+    height: 70vh;
+    background-color: antiquewhite;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-gap: 1rem;
+}
+
+.solution-container .form-box form{
+    width: 100%;
+    height: 100%;
+    background-color: antiquewhite;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    grid-gap: 1rem;
+}
+
+.solution-container .input-box{
+    width: 100%;
+}
+
+.solution-container .input-box input{
+    width: 100%;
+}
+
+.address-input-box{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    grid-gap: 0.6rem;
+}
+
+.add-button{
+    padding:0.5rem 1rem;
+    color: green;
+    background-color: white;
+    /* background-color: none; */
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.plus-icon{
+    width: 30px;
+    height: 30px;
+    color: green;
+}
+
+.delete-icon{
+    width: 60px;
+    height: 30px;
+    color: red;
+}
+
+.submit{
+    padding:0.5rem 1rem;
+    background-color: black;
+    color: red;
+    border: none;
+    border-radius: 5px;
+}
+
+.solution-container .input-box .ng-touched.ng-invalid{
+    border: 1px solid red;
+}
+
+.solution-container .input-box .error-box{
+
+    span{
+        color: red;
+        font-size: 14px;
+    }
+}

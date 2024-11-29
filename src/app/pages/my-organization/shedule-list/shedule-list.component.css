@@ -1,0 +1,27 @@
+.editor {
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-height: 200px;
+    background: #fff;
+  }
+  
+  .toolbar {
+    margin-bottom: 10px;
+  }
+  
+  button {
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    background: #f8f9fa;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  button.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  button:focus {
+    outline: none;
+  }

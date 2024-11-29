@@ -3,3 +3,26 @@
 .top-container{
     margin: 2rem 0 0 2rem;
 }
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    width: 50vw;
+    height: 50vh;
+    background-color: antiquewhite;
+    padding: 2rem 2rem;
+}
+
+
+.container .box{
+    height: 100%;
+    border: 2px solid black;
+}
+
+ .input-box{
+    display: flex;
+    flex-direction: column;
+    width:20vw;
+    margin: auto;
+}
